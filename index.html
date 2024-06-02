@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Omar Abodo's 3D Home Viewer">
+    <meta name="author" content="Omar Abodo">
+    <meta name="keywords" content="3D Buildings, Designs, Home, Viewer, Web, HTML5, JavaScript">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/x-png" href="/go-512x512.png">
+    <title>Omar Abodo's 3D Home Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <!--  Copy the following scripts in your page header -->
+    <script type="text/javascript" src="lib/big.min.js"></script>
+    <script type="text/javascript" src="lib/gl-matrix-min.js"></script>
+    <script type="text/javascript" src="lib/jszip.min.js"></script>
+    <script type="text/javascript" src="lib/core.min.js"></script>
+    <script type="text/javascript" src="lib/geom.min.js"></script>
+    <script type="text/javascript" src="lib/stroke.min.js"></script>
+    <script type="text/javascript" src="lib/batik-svgpathparser.min.js"></script>
+    <script type="text/javascript" src="lib/jsXmlSaxParser.min.js"></script>
+    <script type="text/javascript" src="lib/triangulator.min.js"></script>
+    <script type="text/javascript" src="lib/viewmodel.min.js"></script>
+    <script type="text/javascript" src="lib/viewhome.min.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+  </head>
+
+  <body>
+
+    <main id="root">
+      <aside id="clientsList" class="clients-list">
+        <h2>قائمة العملاء</h2>
+      </aside>
+      <section id="viewerPanel">
+        <div id="viewerControlsDiv" class="form-controller">
+          <div id="viewerNavigationDiv" class="form-controller">
+            <input  id="aerialView"   class="viewerComponent" name="cameraType" type="radio" style="visibility: hidden;"/>
+              <label class="viewerComponent" for="aerialView" style="visibility: hidden;">عرض افقي</label>
+            <input  id="virtualVisit" class="viewerComponent" name="cameraType" type="radio" style="visibility: hidden;"/>
+              <label class="viewerComponent" for="virtualVisit" style="visibility: hidden;">عرض خارجي</label>
+            <select id="levelsAndCameras" class="" style="visibility: hidden;"></select>
+          </div>
+          <div id="VersionViewer" class="form-controller">
+            <label>التعديلات</label>
+            <select id="versionsList" class="versions-list"></select>
+          </div>
+
+        </div>
+        <div id="viewerProgressDiv" >
+          <progress id="viewerProgress"  class="" value="0" max="100"></progress>
+          <label id="viewerProgressLabel" class="" ></label>
+        </div>
+        <!-- Copy the following canvas and components in your page, changing their size / texts and other values if needed  -->
+        <canvas id="viewerCanvas" class="viewer" tabIndex="1"></canvas>
+        
+      </section>
+    </main>
+    
+  <script type="text/javascript" src="index.js"></script>
+  <!-- Copy the following script to view your home in the previous canvas -->
+  
+
+  </body>
+</html>

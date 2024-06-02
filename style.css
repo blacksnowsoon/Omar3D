@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  background-color: #504f4f;
+  margin: 0;
+  direction: rtl;
+}
+#root {
+  display: flex;
+  height: 100vh;
+}
+#clientsList {
+  color: aliceblue;
+  min-width: 280px;
+  min-height: 100vh;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+#viewerPanel {
+  max-width: calc(100svw - 300px);
+  width: 100%;
+  margin: 0 auto;
+}
+#viewerCanvas {
+  margin-top: .5rem;
+  width: 100%;
+  height: calc(100% - 150px);
+  /* max-height:calc(100% - 150px); */
+}
+.viewer {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+}
+.form-controller {
+  display: flex;
+  padding: 1rem;
+  gap: .375rem;
+  align-self: center;
+  border: 2px solid gray;
+  border-radius: .5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  background-color: #3f3e3e;
+}
+.viewerComponent {
+  color: white;
+}
+.btn {
+  background-color: #3f3e3e;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  border: 2px solid gray;
+  border-radius: .5rem;
+  padding: .5rem;
+  cursor: pointer;
+}
