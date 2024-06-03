@@ -3,12 +3,22 @@ let BASE_URL = "";
 const versionList = document.getElementById('versionsList');
 const clientsList = document.getElementById('clientsList');
 const levelsList = document.getElementById('levelsAndCameras');
+const viewerProgress = document.getElementById('viewerProgress');
+const menuBtn = document.getElementById('menuBtn');
+// show menu
+menuBtn.addEventListener('click', () => {
+  
+})
+function toggleMenu() {
+  
+}
 // generate clients list from data and append to clents versions to the drop list
 clients.forEach((client) => {
   const button = document.createElement('button');
   button.textContent = client.label;
   button.setAttribute('name', client.name);
   button.classList.add('btn');
+  button.classList.add('active');
   button.addEventListener('click', () => {
     appendVersions(client.versions, client.name, client.url); 
   });

@@ -9,6 +9,7 @@
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/x-png" href="/go-512x512.png">
     <title>Omar Abodo's 3D Home Viewer</title>
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <!--  Copy the following scripts in your page header -->
     <script type="text/javascript" src="lib/big.min.js"></script>
@@ -32,7 +33,13 @@
         <h2>قائمة العملاء</h2>
       </aside>
       <section id="viewerPanel">
-        <div id="viewerControlsDiv" class="form-controller">
+        
+        <!-- form controller -->
+        <div id="viewerControlsDiv" class="form-controller-container">
+          <!-- menu btn -->
+          <button id="menuBtn" class="menu-btn" >
+            <img src="/menuBars.png" alt="menu" class="menu-img" />
+          </button>
           <div id="viewerNavigationDiv" class="form-controller">
             <input  id="aerialView"   class="viewerComponent" name="cameraType" type="radio" style="visibility: hidden;"/>
               <label class="viewerComponent" for="aerialView" style="visibility: hidden;">عرض افقي</label>
@@ -46,8 +53,9 @@
           </div>
 
         </div>
+        <!-- progress bar -->
         <div id="viewerProgressDiv" >
-          <progress id="viewerProgress"  class="" value="0" max="100"></progress>
+          <progress id="viewerProgress" style="visibility: hidden;"  class="" value="0" max="100"></progress>
           <label id="viewerProgressLabel" class="" ></label>
         </div>
         <!-- Copy the following canvas and components in your page, changing their size / texts and other values if needed  -->
