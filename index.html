@@ -29,8 +29,8 @@
   <body>
 
     <main id="root">
-      <aside id="clientsList" class="clients-list">
-        <h2>قائمة العملاء</h2>
+      <aside id="clientsList" class="clients-list ">
+        <h2>قائمة الاعمال</h2>
       </aside>
       <section id="viewerPanel">
         
@@ -48,7 +48,7 @@
             <select id="levelsAndCameras" class="" style="visibility: hidden;"></select>
           </div>
           <div id="VersionViewer" class="form-controller">
-            <label>التعديلات</label>
+            <label>الاصدارات</label>
             <select id="versionsList" class="versions-list"></select>
           </div>
 
@@ -56,7 +56,7 @@
         <!-- progress bar -->
         <div id="viewerProgressDiv" >
           <progress id="viewerProgress" style="visibility: hidden;"  class="" value="0" max="100"></progress>
-          <label id="viewerProgressLabel" class="" ></label>
+          <label id="viewerProgressLabel" class="progress-label" ></label>
         </div>
         <!-- Copy the following canvas and components in your page, changing their size / texts and other values if needed  -->
         <canvas id="viewerCanvas" class="viewer" tabIndex="1"></canvas>

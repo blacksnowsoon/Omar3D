@@ -1,43 +1,78 @@
 
 let BASE_URL = "";
-const versionList = document.getElementById('versionsList');
+const root = document.getElementById('root');
 const clientsList = document.getElementById('clientsList');
+const menuBtn = document.getElementById('menuBtn');
+const clientsUL = document.createElement('ul');
+const versionList = document.getElementById('versionsList');
 const levelsList = document.getElementById('levelsAndCameras');
 const viewerProgress = document.getElementById('viewerProgress');
-const menuBtn = document.getElementById('menuBtn');
-// show menu
-menuBtn.addEventListener('click', () => {
-  
+// add addEventListener to body to close menu -----------------------------------
+root.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target)) {
+    clientsList.classList.remove('show-menu');
+  }
 })
-function toggleMenu() {
-  
-}
+// add addEventListener to menuBtn ---------------------------------------------
+menuBtn.addEventListener('click', toggleMenu);
+
 // generate clients list from data and append to clents versions to the drop list
 clients.forEach((client) => {
+  if (client.active || client.name === "mainView") {
+  const li = document.createElement('li');
   const button = document.createElement('button');
   button.textContent = client.label;
   button.setAttribute('name', client.name);
   button.classList.add('btn');
-  button.classList.add('active');
   button.addEventListener('click', () => {
+
     appendVersions(client.versions, client.name, client.url); 
   });
-  clientsList.appendChild(button);
+  if (client.name === "mainView") {
+    button.classList.add('active');
+  }
+  li.classList.add('m-p');
+  li.appendChild(button);
+  clientsUL.appendChild(li);
+  }
 })
-// load each client data
+
+// toggle menu on max width 768px --------------------------------------------------
+function toggleMenu(e) {
+  e.preventDefault();
+  console.log(menuBtn);
+  clientsList.classList.toggle('show-menu');
+}
+
+// load each client data -----------------------------------------------------------
 function appendVersions(versions, name, url) {
+  versionList.setAttribute('name', name);
   versions.forEach((version) => {
     const option = document.createElement('option');
     option.value = version;
     option.textContent = version;
-    versionList.setAttribute('name', name);
+    
     versionList.appendChild(option);
   });
   BASE_URL = url;
   const homeUrl = url + versions[0] + ".zip";
   loadHome(homeUrl);
+  toggelActive(name);
 }
-// onchange to change the version
+
+versionList.addEventListener('change', changeVersion);
+
+function toggelActive(name) {
+  const buttons = clientsUL.querySelectorAll('button');
+  buttons.forEach((button) => {
+    if (button.getAttribute('name') === name) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+// onchange to change the version --------------------------------------------------
 function changeVersion(e) {
   const version = e.target.value;
   levelsList.innerHTML = "";
@@ -45,8 +80,7 @@ function changeVersion(e) {
   loadHome(homeUrl);
 }
 
-versionList.addEventListener('change', changeVersion);
-
+// Define onerror and onprogression functions for the canves view ------------------
 var onerror = function(err) {
     if (err == "No WebGL") {
       alert("Sorry, your browser doesn't support WebGL.");
@@ -75,20 +109,26 @@ var onprogression = function(part, info, percentage) {
         (percentage ? Math.floor(percentage * 100) + "% " : "") + part + " " + info;
 };
 
-// Load home
+// Load home -----------------------------------------------------------
 function loadHome(homeUrl) {
-  const options ={
-    roundsPerMinute: 0,                    
+  const options = {
+    roundsPerMinute: 1,                    
     navigationPanel: "none",               
     aerialViewButtonId: "aerialView",       
     virtualVisitButtonId: "virtualVisit",  
     levelsAndCamerasListId: "levelsAndCameras",          
     camera: "Exterior view",                          
-    selectableCameras: ["Exterior view", "Kitchen"],
+    // selectableCameras: ["Exterior view", "Kitchen"],
     activateCameraSwitchKey: false, 
   }
   viewHome("viewerCanvas", homeUrl, onerror, onprogression, options);
 }
 
+// load the default view-------------------------------------------------
+if (clients.length > 0) {
+  clientsList.appendChild(clientsUL);
+  appendVersions(clients[0].versions, clients[0].name, clients[0].url);
+  
+}
   
     
